@@ -1,124 +1,122 @@
 const db = require("../models");
-//const { regexp } = require("sequelize/types/lib/operators");
-const Device = db.devices;
-//const Op = db.Sequelize.Op;
 
-// Create and Save a new Device
+const Category = db.category;
+
+
+// Create and Save a new Categories
 exports.create = (req, res) => {
   
-  // Create a Device Object
-  const device = {
+  // Create a Category Object
+  const category = {
     id: req.body.id,
-    category: req.body.category,
-    color: req.body.color,
-    partNumber: req.body.partNumber
+    name: req.body.name
   };
 
-  // Save Tutorial in the database
-  Device.create(device)
+  // Save Category in the database
+  Category.create(category)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Device."
+          err.message || "Some error occurred while creating the Category."
       });
     });
 };
 
-// Retrieve all Devices from the database.
+// Retrieve all Categories from the database.
 exports.findAll = (req, res) => {   
-    Device.findAll()
+    Category.findAll()
         .then(data => {
             res.send(data);
         })
         .catch(err => {
         res.status(500).send({
             message:
-            err.message || "Some error occurred while retrieving devices."
+            err.message || "Some error occurred while retrieving categories."
         });
         });
 };
 
-// Find a single Device with an id
+// Find a single Category with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Device.findByPk(id)
+    Category.findByPk(id)
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Device with id=" + id
+          message: "Error retrieving Category with id=" + id
         });
       });
 };
 
-// Update a Device by the id in the request
+// Update a Category by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Device.update(req.body, {
+    Category.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Device was updated successfully."
+            message: "Category was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Device with id=${id}. Maybe Device was not found or req.body is empty!`
+            message: `Cannot update Category with id=${id}. Maybe Category was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Device with id=" + id
+          message: "Error updating Category with id=" + id
         });
       });
 };
 
-// Delete a Device with the specified id in the request
+// Delete a Category with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Device.destroy({
+    Category.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Device was deleted successfully!"
+            message: "Category was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Device with id=${id}. Maybe Device was not found!`
+            message: `Cannot delete Category with id=${id}. Maybe Category was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Device with id=" + id
+          message: "Could not delete Category with id=" + id
         });
       });
 };
 
-// Delete all Devices from the database.
+// Delete all Categories from the database.
 exports.deleteAll = (req, res) => {
-    Device.destroy({
+    Category.destroy({
         where: {},
         truncate: false
       })
         .then(nums => {
-          res.send({ message: `${nums} Devices were deleted successfully!` });
+          res.send({ message: `${nums} Categories were deleted successfully!` });
         })
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all devices."
+              err.message || "Some error occurred while removing all categories."
           });
         });
 };

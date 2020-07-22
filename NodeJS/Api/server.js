@@ -24,7 +24,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Eldorado API." });
 });
 
-require("./app/routes/Device.routes")(app);
+require("./app/routes/device.routes")(app);
+require("./app/routes/category.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
