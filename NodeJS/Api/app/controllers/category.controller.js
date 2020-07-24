@@ -2,7 +2,6 @@ const db = require("../models");
 
 const Category = db.category;
 
-
 // Create and Save a new Categories
 exports.create = (req, res) => {
   

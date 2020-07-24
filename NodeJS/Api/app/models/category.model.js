@@ -8,6 +8,11 @@ module.exports = (sequelize, Sequelize) => {
       name: {
           type: Sequelize.STRING(128),
           allowNull: false,
+          validate: {
+            notEmpty:true,
+            notNull: {msg:"Please enter your name"},
+            len: [1,128]            
+          }
       }
     });
   

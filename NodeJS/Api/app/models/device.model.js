@@ -8,9 +8,18 @@ module.exports = (sequelize, Sequelize) => {
       category: {
           type: Sequelize.INTEGER,
           allowNull: false,
+          validate: {
+            isInt:true,
+            notNull: {msg:"Please enter your category"},
+          }
       },
       color: {
-          type:Sequelize.STRING(16),          
+          type:Sequelize.STRING(16),           
+          validate: {
+            notEmpty: true, 
+            notNull: {msg:"Please enter your color name"},
+            len: [1,16] 
+          }         
       },
       partNumber: {
           type: Sequelize.INTEGER,
