@@ -1,1 +1,29 @@
-<p>device-new works!</p>
+<div>
+    <h3>Add new Device</h3>
+  </div>
+  <form class="example-container" [formGroup]="deviceForm" (ngSubmit)="addDevice(deviceForm.value)">
+    <mat-form-field>
+      <input matInput name="id" placeholder="Id" formControlName="id">
+    </mat-form-field>
+
+    
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select name="category" formControlName="category">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput name="color" placeholder="Color" formControlName="color">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="partNumber" placeholder="Part Number" formControlName="partNumber">
+    </mat-form-field>
+  
+    <button type="submit" [disabled]="!deviceForm.valid" mat-button color="primary">Add</button>
+  </form>

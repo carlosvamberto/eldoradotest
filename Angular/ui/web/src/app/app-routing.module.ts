@@ -4,7 +4,6 @@ import { DevicesComponent } from './devices/devices.component';
 import { DeviceDetailComponent } from './device-detail/device-detail.component';
 import { DeviceNewComponent } from './device-new/device-new.component';
 
-
 const routes: Routes = [
   {
     path: 'device',
@@ -21,6 +20,7 @@ const routes: Routes = [
     component: DeviceNewComponent,
     data: { title: 'New Device' }
   }, 
+
   {
     path: '',
     redirectTo: '/device',

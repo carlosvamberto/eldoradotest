@@ -19,7 +19,7 @@ module.exports = app => {
     router.delete("/:id", devices.delete);
   
     // Create a new Tutorial
-    router.delete("/", devices.deleteAll);
+    //router.delete("/", devices.deleteAll);
   
     app.use('/api/devices', router);
   };

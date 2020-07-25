@@ -83,6 +83,8 @@ exports.update = (req, res) => {
 
 // Delete a Device with the specified id in the request
 exports.delete = (req, res) => {
+
+    console.log("Deletando ");
     const id = req.params.id;
 
     Device.destroy({
