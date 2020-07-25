@@ -14,12 +14,13 @@ module.exports = (sequelize, Sequelize) => {
           }
       },
       color: {
-          type:Sequelize.STRING(16),           
+          type:Sequelize.STRING(16),
+          allowNull: false,           
           validate: {
             notEmpty: true, 
             notNull: {msg:"Please enter your color name"},
             len: [1,16] 
-          }         
+          } 
       },
       partNumber: {
           type: Sequelize.INTEGER,
